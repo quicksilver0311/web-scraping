@@ -1,3 +1,9 @@
+#!/usr/bin/python3
+
+# A simple Tweet scrapper to extract all tweets containing a keyword for a certain username
+# Author: Jay Shah
+# Date: Jul 8, 2020
+
 import GetOldTweets3 as got
 import pandas as pd
 import sys
