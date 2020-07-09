@@ -18,7 +18,11 @@ tweetCriteria = got.manager.TweetCriteria().setUsername(username).setMaxTweets(c
 # Creation of list that contains all tweets
 tweets = got.manager.TweetManager.getTweets(tweetCriteria)
 
+# Creating list of chosen tweet data
+text_tweets = [[tweet.date, tweet.text] for tweet in tweets if keyword in tweet.text]
+
 # Printing tweet data containing keyword
-for tweet in tweets:
-    if keyword in tweet.text:
-        print (tweet.date, tweet.text)
+tweets_df = pd.DataFrame(text_tweets, columns = ['Datetime', 'Text']) 
+
+# Converting tweets dataframe to csv file
+tweets_df.to_csv('{}-{}-tweets.csv'.format(username, keyword), sep='|')
